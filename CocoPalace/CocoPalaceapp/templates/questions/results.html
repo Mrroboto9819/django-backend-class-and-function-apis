@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Results of question </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+    </head>
+    <body>
+        <nav class="navbar bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'test:index'%}">
+                    <h1 style="color: #fff;"> Django test </h1>
+                </a>
+            </div>
+        </nav>
+        <br>
+        <main class="container">
+            <h2> {{ question.question_text }} </h2>
+            <ul>
+                {% for choice in question.choice_set.all %}
+                    <li>
+                        {{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="row p-4">
+                <div class="col-6 p-2">
+                    <a class="btn btn-primary" href="{% url 'test:detail' question.id %}"> Vote again </a>
+                </div>
+                <div class="col-6 p-2">
+                    <a class="btn btn-success" href="{% url 'test:index'%}"> Return to list</a>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
