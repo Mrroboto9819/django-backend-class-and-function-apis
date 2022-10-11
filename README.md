@@ -1,5 +1,5 @@
 # django-backend-class-and-function-apis
-Proyect made to learn more python and django works
+Proyect made to learn more python and django.
 
 topics
 - Views
